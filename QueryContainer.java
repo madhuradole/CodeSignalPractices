@@ -1,3 +1,7 @@
+/***
+    CodeSignal Progressive Singal Function: https://app.codesignal.com/practice-question/description/progressiveSingleFunction?context=otherTypes
+*/
+
 // Short and crisp
 String[] solution(String[][] queries) {
     String[] responses = new String[queries.length];
