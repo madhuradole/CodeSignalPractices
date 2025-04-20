@@ -1,3 +1,27 @@
+// Short and crisp
+String[] solution(String[][] queries) {
+    String[] responses = new String[queries.length];
+    List<String> addedQueries = new ArrayList<>();
+    for (int i = 0; i < queries.length ; i++) {
+        String command = queries[i][0], numValue = queries[i][1];
+        switch (command) {
+            case "ADD" -> { addedQueries.add(numValue); responses[i] = ""; }
+            case "EXISTS" -> responses[i] = addedQueries.contains(numValue) ? "true" : "false";
+            case "REMOVE" -> responses[i] = addedQueries.remove(numValue) ? "true" : "false";
+            case "GET_NEXT" -> {
+                OptionalInt next = addedQueries.stream()
+                .mapToInt(Integer::parseInt)
+                .filter(n -> n > Integer.parseInt(numValue))
+                .min();
+                responses[i] = next.isPresent() ? String.valueOf(next.getAsInt()) : "";
+            }
+        }
+    }
+    return responses;
+}
+
+
+// First attempt
 String[] solution(String[][] queries) {
     String[] responses = new String[queries.length];
     List<String> addedQueries = new ArrayList<>();
